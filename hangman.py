@@ -6,6 +6,7 @@ def get_word():
     word = random.choice(word_list)
     return word.upper()
 
+# hello
 
 def play(word):
     word_completion = "_ " * len(word)
