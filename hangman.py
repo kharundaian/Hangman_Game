@@ -14,9 +14,11 @@ class Hangman:
         print(self.word_completion)
         print("\n")
 
+
     def start_game(self):
         self.greating()
         self.check_results()
+
 
     def check_results(self):
         while not self.guessed and self.tries > 0:
@@ -35,8 +37,8 @@ class Hangman:
                     indices = [i for i, letter in enumerate(self.word) if letter == guess]
                     for index in indices:
                         word_as_list[index] = guess
-                    word_completion = "".join(word_as_list)
-                    if "_" not in word_completion:
+                    self.word_completion = "".join(word_as_list)
+                    if "_" not in self.word_completion:
                         self.guessed = True
             elif len(guess) == len(self.word) and guess.isalpha():
                 if guess in self.guessed_words:
@@ -56,6 +58,7 @@ class Hangman:
             print("Congrats, you guessed the word! You win!")
         else:
             print("Sorry you ran out of the tries. The word was " + self.word + " Try again")
+
 
     def display_hangman(self):
         stages = ["""
@@ -120,8 +123,6 @@ class Hangman:
                       |       
                       |      
                       -
-
-
                   """,
                   ]
         return stages[self.tries]
